@@ -12,7 +12,7 @@ Zone.create!( value: "Madrid",
 Zone.create!( value: "Detroit",
               offset: -14)
 
-Zone.create!( value: "Malaysia",
+Zone.create!( value: "Kuala_Lumpur",
               offset: -2)
 
 data = ActiveSupport::JSON.decode(File.read("db/zone.json"))
