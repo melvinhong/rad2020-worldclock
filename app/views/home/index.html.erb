@@ -1,0 +1,49 @@
+<% provide(:title ,"Home") %>
+
+<div class="container">
+
+  <div class="row d-flex justify-content-center">
+    <h1>Clock+</h1>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <p>Clock+ built by Melvin Hong | s3511887@student.rmit.edu.au | Attempted Grade: DI | Tutor Group: Thursday 7:30p.m. - 9:30p.m. </p>
+  </div>
+
+  <!-- Start label for type of time -->
+
+  <div class="row d-flex align-items-center p-5">
+    <div class="col-sm-3 float-right small">
+      <ul>
+        <li><i class="fa fa-circle mr-2 text-success" aria-hidden="true"></i>Business time</li>
+        <li><i class="fa fa-circle mr-2 text-warning" aria-hidden="true"></i>Business overtime</li>
+        <li><i class="fa fa-circle mr-2 text-danger" aria-hidden="true"></i>Personal time</li>
+        <li><i class="fa fa-bed mr-1" aria-hidden="true"></i>Sleeping time</li>
+      </ul>
+    </div>
+
+    <!-- End label for type of time -->
+
+    <!-- Start world clock -->
+
+    <%= render partial: 'layouts/clock' %>
+
+    <!-- End world clock -->
+
+    <div class="col-sm-3 float-left small">
+      <p>Color Theme</p>
+      <div class="btn-group btn-group-sm" role="group">
+        <button type="button" class="btn btn-secondary active" id="btnblack">Black</button>
+        <button type="button" class="btn btn-secondary" id="btngraphite">Graphite</button>
+        <button type="button" class="btn btn-secondary" id="btnwhite">White</button>
+      </div>
+
+      <div class="py-2">
+        <% if $status == 1 %>
+          <%= button_to '12-Hour Clock', home_changeTimeFormat_path, method: :post, class:"btn btn-sm btn-success"%>
+            <% else %>
+          <%= button_to '24-Hour Clock', home_changeTimeFormat_path, method: :post, class:"btn btn-sm btn-light"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

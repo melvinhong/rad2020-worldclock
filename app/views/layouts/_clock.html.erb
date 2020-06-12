@@ -1,0 +1,62 @@
+<!-- Start clocks for zones -->
+
+<div class="col-sm-6 card h-100 clock-card p-4">
+
+  <div class="clock-row py-4 d-flex align-items-center">
+    <div class="col-sm-6 float-left">
+      <h3><%= Time.zone.name %></h3>
+    </div>
+    <div class="col-sm-6 float-right text-right">
+
+      <h2><%= Time.current.strftime("%H:%M") %></h2>
+
+        <% if (Time.current.strftime("%H").to_i >= 9) && (Time.current.strftime("%H").to_i <= 17) %>
+          <div>Today<br><i class="fa fa-circle mr-2 text-success" aria-hidden="true"></i></div>
+        <% elsif (Time.current.strftime("%H").to_i >= 18) && (Time.current.strftime("%H").to_i <= 19) %>
+          <div>Today<br><i class="fa fa-circle mr-2 text-warning" aria-hidden="true"></i></div>
+        <% elsif (Time.current.strftime("%H").to_i == 8) || ((Time.current.strftime("%H").to_i >= 20) && (Time.current.strftime("%H").to_i <= 22)) %>
+          <div>Today<br><i class="fa fa-circle mr-2 text-danger" aria-hidden="true"></i></div>
+        <% elsif (Time.current.strftime("%H").to_i >= 23) || (Time.current.strftime("%H").to_i <= 7) %>
+          <div>Today<br><i class="fa fa-bed mr-2" aria-hidden="true"></i></div>
+        <% end %>
+
+    </div>
+  </div>
+
+<% @zones.take(5).each do |zone| %>
+  <div class="clock-row py-4 d-flex align-items-center">
+
+      <div class="col-sm-6 float-left">
+        <h3><%= zone.value %></h3>
+        <br>
+        <%= zone.offset %>h
+      </div>
+      <div class="col-sm-6 float-right text-right">
+        <h2><%= zone.time%></h2>
+        <%= zone.day %>
+        <br>
+      <% if zone.mode == "Business Time" %>
+        <i class="fa fa-circle mr-2 text-success" aria-hidden="true"></i>
+      <% elsif zone.mode == "Business Overtime" %>
+        <i class="fa fa-circle mr-2 text-warning" aria-hidden="true"></i>
+      <% elsif zone.mode == "Sleeping Time" %>
+        <i class="fa fa-bed mr-2" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-circle mr-2 text-danger" aria-hidden="true"></i>
+    <% end %>
+
+    </div>
+  </div>
+  <% end %>
+
+  <!-- end clock for zones -->
+
+  <!-- Start search function -->
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12 text-center" id="zonesearch">
+      <h4>+</h4>
+    </div>
+  </div>
+
+</div>
