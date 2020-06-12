@@ -42,17 +42,17 @@ class HomeController < ApplicationController
         if @time.hour>=12
           pm = @time.hour
           pm = pm -12
-          hour = pm.to_s(:time)
-          min = @time.min.to_s(:time)
+          hour = pm.to_s.rjust(2, '0')
+          min = @time.min.to_s.rjust(2, '0')
           time = hour + ":" + min + "PM"
         else
-          hour = @time.hour.to_s(:time)
-          min = @time.min.to_s(:time)
+          hour = @time.hour.to_s.rjust(2, '0')
+          min = @time.min.to_s.rjust(2, '0')
           time = hour + ":" + min + "AM"
         end
       else
-        hour = @time.hour.to_s(:time)
-        min = @time.min.to_s(:time)
+        hour = @time.hour.to_s.rjust(2, '0')
+        min = @time.min.to_s.rjust(2, '0')
         time = hour + ":" + min
       end
 
